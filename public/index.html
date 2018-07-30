@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <meta charset="utf-8"/></meta>
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <!--Pulling Script Source From Web-->
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+  <script src="script.js"></script>
+  <title>Movie Search | OMDb API</title>
+</head>
+
+<body ng-app="OMDbAPISearch">
+  <div class="container" ng-controller="searchMovies">
+
+    <h1>Search a Movie Title Below</h1>
+    <p>API Resource(<a href="http://www.omdbapi.com" target="_blank">http://www.omdbapi.com</a>)</p>
+    <form>
+      <div class="search">
+       <input id="theSearch" ng-model="searchparam" placeholder="movie name" type="text" ngTrim="true" />
+       <button ng-click="fetch()">Search</button>
+       <div class="clear"></div>
+      </div>
+    </form>
+
+    <div class="results">
+
+      <div class="result" movie-srch-results ng-repeat="movie in movieResults"></div>
+
+    </div>
+    <div class="noResults"></div>
+
+  </div>
+  
+  <div class="footercontainer">
+    <form method="POST" action="/addcomment">
+        <label>Name:<input type="text" name="client-name" required></label>
+        <br>
+        <label>Email:<input type="text" name="client-email" required></label>
+        <br>
+        <label>Comment:<br><textarea name="comment"></textarea></label>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <a href="/view-feedbacks">View feedbacks</a>
+  </div>
+</body>
+</html>
